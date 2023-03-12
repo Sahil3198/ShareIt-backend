@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require('dotenv').config();
 const cors = require("cors");
 //------------------------Enabling CORS -----------------------------
 app.use(cors());
@@ -11,12 +12,7 @@ app.use(bodyParser.json({ limit: "200mb" }));
 
 const mongoose = require("mongoose");
 
-
-
-
-mongoose.connect(
-    "mongodb+srv://root:root@cluster0.3zuha.mongodb.net/shareIT?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.DATABASE_URI);
 
 //-----------------------ADMIN MODULE ENDPOINTS START ---------------
 
